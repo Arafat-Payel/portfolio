@@ -140,7 +140,8 @@ a {
 }
 
 .section-journey,
-.section-portfolio {
+.section-portfolio,
+.section-designs {
   padding-top: 104px;
   padding-bottom: 104px;
 }
@@ -704,7 +705,89 @@ a {
   text-transform: uppercase;
   cursor: pointer;
 }
+/* DESIGN WORKS (FLOATING) */
 
+.section-designs {
+  position: relative;
+}
+
+.designs-float {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 18px;
+  margin-top: 80px; /* matches your other sections (skills/portfolio spacing style) */
+}
+
+.design-float-card {
+  position: relative;
+  grid-column: span 4; /* 3 per row desktop */
+  border-radius: 32px; /* matches project-card style */
+  overflow: hidden;
+
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.9);
+  box-shadow: var(--shadow-soft);
+
+  transform: translateY(0);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.design-float-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55);
+}
+
+.design-float-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  transform: scale(1);
+  transition: transform 220ms ease;
+}
+
+.design-float-card:hover img {
+  transform: scale(1.04);
+}
+
+.design-float-caption {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 14px;
+
+  padding: 10px 12px;
+  border-radius: 18px;
+
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+
+  background: rgba(11, 15, 26, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(12px);
+}
+
+/* Responsive: follow your existing breakpoint style */
+@media (max-width: 1024px) {
+  .design-float-card {
+    grid-column: span 12; /* 1 per row like portfolio/skills on tablet */
+  }
+
+  .design-float-card img {
+    height: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .design-float-card,
+  .design-float-card img {
+    transition: none;
+  }
+}
 /* ACADEMICS */
 
 .academics-grid {
@@ -1010,4 +1093,5 @@ a {
     align-items: flex-start;
   }
 }
+
 
