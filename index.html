@@ -544,8 +544,31 @@
       </section>
     </main>
   </div>
+
+  <script>
+  document.querySelectorAll(".journey-card-inner").forEach((card) => {
+    const toggle = () => {
+      const isOpen = card.classList.toggle("is-open");
+      card.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    };
+
+    card.addEventListener("click", (e) => {
+      // avoid toggling when clicking a link inside
+      if (e.target.closest("a, button")) return;
+      toggle();
+    });
+
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
+  });
+</script>
 </body>
 </html>
+
 
 
 
