@@ -471,7 +471,91 @@ a {
   background: rgba(11, 15, 26, 0.8);
   backdrop-filter: blur(16px);
 }
+/* EXPERIENCE: hover uplift + view more + expandable points */
 
+.journey-card-inner {
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.journey-card-inner:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55);
+}
+
+/* "View more" row (hidden until hover / open) */
+.journey-expand {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 160ms ease, transform 160ms ease;
+  color: var(--text-soft);
+  user-select: none;
+}
+
+.journey-card-inner:hover .journey-expand,
+.journey-card-inner.is-open .journey-expand {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.journey-expand-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.journey-expand-icon {
+  font-size: 22px; /* override your default 30px for this icon */
+  transition: transform 180ms ease;
+}
+
+/* Rotate icon when open */
+.journey-card-inner.is-open .journey-expand-icon {
+  transform: rotate(180deg);
+}
+
+/* Hidden bullet list */
+.journey-points {
+  margin: 16px 0 0;
+  padding-left: 18px;
+
+  display: grid;
+  gap: 10px;
+
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transition: max-height 240ms ease, opacity 200ms ease;
+}
+
+/* Reveal when open */
+.journey-card-inner.is-open .journey-points {
+  max-height: 500px; /* enough room for bullets */
+  opacity: 1;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .journey-card-inner,
+  .journey-expand,
+  .journey-expand-icon,
+  .journey-points {
+    transition: none;
+  }
+}
 .journey-card-header {
   display: flex;
   align-items: center;
@@ -1093,5 +1177,6 @@ a {
     align-items: flex-start;
   }
 }
+
 
 
