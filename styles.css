@@ -18,7 +18,10 @@
 *::after {
   box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 96px; /* offset for sticky navbar */
+}
 html,
 body {
   margin: 0;
@@ -242,11 +245,12 @@ a {
   margin: 0;
   font-family: "Outfit", system-ui, sans-serif;
   font-weight: 700;
-  font-size: clamp(72px, 12vw, 160px);
-  line-height: 0.85;
-  letter-spacing: -0.05em;
+  font-size: clamp(36px, 6.5vw, 88px);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
   color: var(--text-primary);
 }
+.hero-title { text-wrap: balance; }
 
 .hero-subtitle,
 .hero-content p {
@@ -1253,5 +1257,21 @@ a {
 html, body { overflow-x: hidden; }
 img { max-width: 100%; height: auto; }
 
+/* reveal-on-scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { transition: none; transform: none; opacity: 1; }
+}
 
 
