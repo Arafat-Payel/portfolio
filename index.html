@@ -86,7 +86,7 @@
           <div class="journey-divider"></div>
           <div class="journey-cards">
            <article class="journey-card">
-  <div class="journey-card-badge journey-card-badge--pink"></div>
+  <div class="journey-card-badge journey-card-badge--purple"></div>
 
   <div class="journey-card-inner" role="button" tabindex="0" aria-expanded="false">
     <div class="journey-card-header">
@@ -104,11 +104,11 @@
       Secured BDT 60,000 in World Bank UIHP Cohort 3 funding (2nd highest among 25+ teams)
     </p>
 
-    <!-- NEW: view more toggle row -->
-    <div class="journey-expand">
-      <span class="journey-expand-label">View more</span>
-      <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
-    </div>
+ <!-- NEW: view more chip/button -->
+<button class="journey-expand" type="button" aria-expanded="false">
+  <span class="journey-expand-label">View more</span>
+  <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
+</button>
 
     <!-- NEW: hidden bullet points -->
     <ul class="journey-points">
@@ -144,11 +144,11 @@
       engagement.
     </p>
 
-    <!-- NEW: view more toggle row -->
-    <div class="journey-expand">
-      <span class="journey-expand-label">View more</span>
-      <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
-    </div>
+  <!-- NEW: view more chip/button -->
+<button class="journey-expand" type="button" aria-expanded="false">
+  <span class="journey-expand-label">View more</span>
+  <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
+</button>
 
     <!-- NEW: hidden bullet points -->
     <ul class="journey-points">
@@ -170,7 +170,7 @@
 </article>
 
             <article class="journey-card">
-  <div class="journey-card-badge journey-card-badge--pink"></div>
+  <div class="journey-card-badge journey-card-badge--teal"></div>
 
   <div class="journey-card-inner" role="button" tabindex="0" aria-expanded="false">
     <div class="journey-card-header">
@@ -186,11 +186,11 @@
     Collaborated on industry-academic bridging programs. Managed logistics and communication for technical seminars and workshops.
     </p>
 
-    <!-- NEW: view more toggle row -->
-    <div class="journey-expand">
-      <span class="journey-expand-label">View more</span>
-      <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
-    </div>
+   <!-- NEW: view more chip/button -->
+<button class="journey-expand" type="button" aria-expanded="false">
+  <span class="journey-expand-label">View more</span>
+  <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
+</button>
 
     <!-- NEW: hidden bullet points -->
     <ul class="journey-points">
@@ -212,7 +212,7 @@
           
 
             <article class="journey-card">
-  <div class="journey-card-badge journey-card-badge--pink"></div>
+  <div class="journey-card-badge journey-card-badge--slate"></div>
 
   <div class="journey-card-inner" role="button" tabindex="0" aria-expanded="false">
     <div class="journey-card-header">
@@ -227,11 +227,11 @@
      Coordinated international conferences focused on industrial engineering and operations management, managing a diverse group of stakeholders.
     </p>
 
-    <!-- NEW: view more toggle row -->
-    <div class="journey-expand">
-      <span class="journey-expand-label">View more</span>
-      <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
-    </div>
+    <!-- NEW: view more chip/button -->
+<button class="journey-expand" type="button" aria-expanded="false">
+  <span class="journey-expand-label">View more</span>
+  <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
+</button>
 
     <!-- NEW: hidden bullet points -->
     <ul class="journey-points">
@@ -545,29 +545,33 @@
     </main>
   </div>
 
-  <script>
-  document.querySelectorAll(".journey-card-inner").forEach((card) => {
-    const toggle = () => {
-      const isOpen = card.classList.toggle("is-open");
-      card.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    };
+ <script>
+  const cards = document.querySelectorAll(".journey-card-inner");
 
-    card.addEventListener("click", (e) => {
-      // avoid toggling when clicking a link inside
-      if (e.target.closest("a, button")) return;
-      toggle();
-    });
+  cards.forEach((card) => {
+    const btn = card.querySelector(".journey-expand");
 
-    card.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggle();
+    btn.addEventListener("click", () => {
+      const isOpening = !card.classList.contains("is-open");
+
+      // close all first (so only one stays open)
+      cards.forEach((c) => {
+        c.classList.remove("is-open");
+        const b = c.querySelector(".journey-expand");
+        if (b) b.setAttribute("aria-expanded", "false");
+      });
+
+      // open this one if it was closed
+      if (isOpening) {
+        card.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
       }
     });
   });
 </script>
 </body>
 </html>
+
 
 
 
