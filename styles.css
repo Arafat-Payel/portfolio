@@ -473,8 +473,9 @@ a {
 }
 /* EXPERIENCE: hover uplift + view more + expandable points */
 
+/* EXPERIENCE: only show a shaded "View more" chip, expand on click */
+
 .journey-card-inner {
-  cursor: pointer;
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
@@ -484,47 +485,51 @@ a {
   box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.55);
 }
 
-/* "View more" row (hidden until hover / open) */
+/* View more chip (always visible, shaded) */
 .journey-expand {
   margin-top: 18px;
-  display: flex;
+
+  display: inline-flex;
   align-items: center;
   gap: 10px;
 
-  opacity: 0;
-  transform: translateY(6px);
-  transition: opacity 160ms ease, transform 160ms ease;
+  padding: 10px 16px;
+  border-radius: 9999px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
   color: var(--text-soft);
+
+  cursor: pointer;
   user-select: none;
-}
 
-.journey-card-inner:hover .journey-expand,
-.journey-card-inner.is-open .journey-expand {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.journey-expand-label {
-  font-size: 12px;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   font-weight: 700;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  opacity: 0.9;
+
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.journey-expand:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.14);
 }
 
 .journey-expand-icon {
-  font-size: 22px; /* override your default 30px for this icon */
+  font-size: 20px; /* smaller than global 30px */
   transition: transform 180ms ease;
 }
 
-/* Rotate icon when open */
 .journey-card-inner.is-open .journey-expand-icon {
   transform: rotate(180deg);
 }
 
-/* Hidden bullet list */
+/* Collapsed by default */
 .journey-points {
-  margin: 16px 0 0;
+  margin: 14px 0 0;
   padding-left: 18px;
 
   display: grid;
@@ -538,16 +543,16 @@ a {
   opacity: 0;
   overflow: hidden;
 
-  transition: max-height 240ms ease, opacity 200ms ease;
+  transition: max-height 260ms ease, opacity 200ms ease;
 }
 
-/* Reveal when open */
+/* Expanded */
 .journey-card-inner.is-open .journey-points {
-  max-height: 500px; /* enough room for bullets */
+  max-height: 500px;
   opacity: 1;
 }
 
-/* Respect reduced motion */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .journey-card-inner,
   .journey-expand,
@@ -1177,6 +1182,7 @@ a {
     align-items: flex-start;
   }
 }
+
 
 
 
