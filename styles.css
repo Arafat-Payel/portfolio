@@ -119,12 +119,24 @@ a {
 }
 
 .nav-cta {
-  padding: 10px 24px;
+  padding: 10px 22px;
   border-radius: 9999px;
-  background: #ffffff;
-  color: var(--bg);
-  font-weight: 700;
+
+  background: rgba(168, 85, 247, 0.16); /* theme */
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  color: #fff;
+
+  font-weight: 800;
   letter-spacing: 0.2em;
+  box-shadow: 0 10px 25px -12px rgba(168, 85, 247, 0.55);
+
+  transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+.nav-cta:hover {
+  transform: translateY(-1px);
+  background: rgba(168, 85, 247, 0.24);
+  border-color: rgba(168, 85, 247, 0.65);
 }
 
 /* SECTIONS */
@@ -389,6 +401,17 @@ a {
   margin-bottom: 80px;
 }
 
+/* Inline keyword highlight (manual) */
+.hl {
+  font-weight: 800;
+  color: var(--accent-teal);
+}
+
+.hl-purple {
+  font-weight: 800;
+  color: var(--accent);
+}
+
 .journey-header {
   display: flex;
   align-items: flex-end;
@@ -498,7 +521,7 @@ a {
   align-items: center;
   gap: 10px;
 
-  padding: 10px 16px;
+  padding: 9px 14px;
   border-radius: 9999px;
 
   background: rgba(255, 255, 255, 0.06);
@@ -510,8 +533,8 @@ a {
 
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   font-weight: 700;
-  font-size: 12px;
-  letter-spacing: 0.14em;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 
   transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
@@ -739,7 +762,36 @@ a {
   object-fit: cover;
   display: block;
 }
+.project-footer--actions {
+  gap: 14px;
+}
 
+.project-expand {
+  opacity: 0.9;
+}
+
+.project-points {
+  margin: 0 32px 28px;
+  padding-left: 18px;
+
+  display: grid;
+  gap: 10px;
+
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transition: max-height 260ms ease, opacity 200ms ease;
+}
+
+.project-card.is-open .project-points {
+  max-height: 420px;
+  opacity: 1;
+}
 .project-image--placeholder {
   background: radial-gradient(
     circle at top left,
@@ -844,7 +896,57 @@ a {
 .design-float-card:hover img {
   transform: scale(1.04);
 }
+/* DESIGNS: collapsed view with partial "hint" row */
+.designs-reveal {
+  position: relative;
+  margin-top: 80px; /* keep your spacing feel */
+}
 
+/* We will clamp the height when collapsed */
+.designs-reveal.is-collapsed .designs-float {
+  /* 2 full rows (260px) + gaps + a partial hint */
+  max-height: 760px;              /* tuned for your 260px images + captions */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Grey fade hint at bottom when collapsed */
+.designs-reveal.is-collapsed .designs-float::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 180px;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 26, 0) 0%,
+    rgba(11, 15, 26, 0.55) 35%,
+    rgba(11, 15, 26, 0.92) 100%
+  );
+  pointer-events: none;
+}
+
+/* Centered button below */
+.designs-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.designs-more-btn {
+  padding: 12px 22px;
+  border-radius: 9999px;
+}
+
+/* Expanded state */
+.designs-reveal.is-expanded .designs-float {
+  max-height: none;
+  overflow: visible;
+}
+.designs-reveal.is-expanded .designs-float::after {
+  display: none;
+}
 .design-float-caption {
   position: absolute;
   left: 14px;
@@ -1273,5 +1375,6 @@ img { max-width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition: none; transform: none; opacity: 1; }
 }
+
 
 
