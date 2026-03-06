@@ -1,17 +1,673 @@
-document.querySelector('.portfolio-grid').addEventListener('click', function(e) {
-    const expandBtn = e.target.closest('.project-expand');
-    if (!expandBtn) return;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Arafat Payel – Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Plus+Jakarta+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page">
+    <!-- Navigation -->
+    <header class="nav">
+      <div class="nav-inner">
+        <div class="nav-brand">ARAFAT.PAYEL</div>
+        <nav class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#portfolio">Achievements</a>
+          <a href="#designs">Designs</a>
+          <a href="#contact" class="nav-cta">Hire Me</a>
+        </nav>
+      </div>
+    </header>
 
-    const projectCard = expandBtn.closest('.project-card');
-    const isExpanded = projectCard.getAttribute('aria-expanded') === 'true';
+    <main>
+      <!-- Hero -->
+      <section id="home" class="section section-hero">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <div class="hero-pill">
+              <span class="pill-dot"></span>
+              <span class="pill-label">Industrial &amp; Production Engineer</span>
+            </div>
+            <h1 class="hero-title">ARAFAT PAYEL</h1>
+            <p class="hero-subtitle">
+              Design Coordinator specializing in the intersection of industrial efficiency and creative
+              strategy. Student at BUET.
+            </p>
+            <div class="hero-actions">
+  <a href="mailto:payelarafat@gmail.com" class="btn btn-primary">Email Me</a>
+  <a href="https://www.linkedin.com/in/arafat-payel/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">LinkedIn</a>
+</div>
+          </div>
+          <div class="hero-portrait">
+            <div class="hero-gradient"></div>
+            <div class="hero-portrait-frame">
+              <img src="assets/portrait.png" alt="Arafat Payel portrait" />
+            </div>
+          </div>
+        </div>
+      </section>
 
-    // Close all project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.setAttribute('aria-expanded', 'false');
+      <!-- Professional Summary -->
+      <section class="section section-summary">
+        <div class="summary-card">
+          <div class="summary-glow"></div>
+          <div class="summary-inner">
+            <p class="eyebrow">Professional Summary</p>
+            <p class="summary-text">
+              A result-oriented Industrial &amp; Production Engineering student with a proven track
+              record in Design Coordination and leadership. Expert in driving operational excellence
+              through data-driven decisions while maintaining a high-end creative aesthetic.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Professional Journey -->
+      <section id="experience" class="section section-journey">
+        <div class="journey-header">
+          <div class="section-header">
+            <p class="eyebrow">The Core</p>
+            <h2 class="section-title">Professional Journey</h2>
+          </div>
+        </div>
+        <div class="journey-layout">
+          <div class="journey-divider"></div>
+          <div class="journey-cards">
+           <article class="journey-card">
+  <div class="journey-card-badge journey-card-badge--purple"></div>
+
+  <div class="journey-card-inner" role="button" tabindex="0" aria-expanded="false">
+    <div class="journey-card-header">
+      <div class="journey-card-titles">
+        <h3 class="journey-role">Chief Marketing Officer
+</h3>
+        <p class="journey-org">Nirapotta | Startup | UIHP Cohort 3
+
+</p>
+      </div>
+      <span class="journey-meta">Present</span>
+    </div>
+
+    <p class="journey-text">
+      Secured BDT 60,000 in World Bank UIHP Cohort 3 funding (2nd highest among 25+ teams)
+    </p>
+
+ <!-- NEW: view more chip/button -->
+<button class="journey-expand" type="button" aria-expanded="false">
+  <span class="journey-expand-label">View more</span>
+  <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
+</button>
+
+    <!-- NEW: hidden bullet points -->
+    <ul class="journey-points">
+      <li>Increased pilot survey engagement by 40% through data-driven targeting strategies
+</li>
+      <li>Developed investment pitch decks achieving <span class="hl">25% higher</span> funding success rate vs. cohort average
+</li>
+      <li>Led market research and validation for product-market fit in safety/security sector</li>
+    </ul>
+
+    <div class="journey-tags">
+      <span class="tag">Marketing</span>
+      <span class="tag">Team Leadership</span>
+    </div>
+  </div>
+</article>
+
+           <article class="journey-card">
+  <div class="journey-card-badge journey-card-badge--pink"></div>
+
+  <div class="journey-card-inner" role="button" tabindex="0" aria-expanded="false">
+    <div class="journey-card-header">
+      <div class="journey-card-titles">
+        <h3 class="journey-role">Design Coordinator</h3>
+        <p class="journey-org">BUET Career Club</p>
+      </div>
+      <span class="journey-meta">Present</span>
+    </div>
+
+    <p class="journey-text">
+      Leading the creative direction for major campus initiatives. Successfully spearheaded
+      the design strategy for the Prime Bank event and other collaborations ensuring high brand visibility and
+      engagement.
+    </p>
+
+  <!-- NEW: view more chip/button -->
+<button class="journey-expand" type="button" aria-expanded="false">
+  <span class="journey-expand-label">View more</span>
+  <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
+</button>
+
+    <!-- NEW: hidden bullet points -->
+    <ul class="journey-points">
+      <li>Organized <span class="hl">"Financial Inclusion: Banking & Youth"</span> by Prime Bank (100+ offline attendees)
+</li>
+      <li>Executed <span class="hl">"The MNC Blueprint" </span>online career seminar (100+ participants from 12 universities)
+</li>
+      <li>Delivered <span class="hl">"GP FUTUREMAKERS Online Roadshow" </span>in partnership with 12 inter-university clubs
+</li>
+      <li>Produced <span class="hl">"Zen Talk: The Dabur Way" </span>featuring Dabur Bangladesh HR leadership
+</li>
+    </ul>
+
+    <div class="journey-tags">
+      <span class="tag">Art Direction</span>
+      <span class="tag">Team Leadership</span>
+    </div>
+  </div>
+</article>
+
+            <article class="journey-card">
+  <div class="journey-card-badge journey-card-badge--teal"></div>
+
+  <div class="journey-card-inner" role="button" tabindex="0" aria-expanded="false">
+    <div class="journey-card-header">
+      <div class="journey-card-titles">
+        <h3 class="journey-role">Assistant Design Secretary
+</h3>
+        <p class="journey-org">AIPE - Association of Industrial & Production Engineers</p>
+      </div>
+      <span class="journey-meta">Present</span>
+    </div>
+
+    <p class="journey-text">
+    Collaborated on industry-academic bridging programs. Managed logistics and communication for technical seminars and workshops.
+    </p>
+
+   <!-- NEW: view more chip/button -->
+<button class="journey-expand" type="button" aria-expanded="false">
+  <span class="journey-expand-label">View more</span>
+  <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
+</button>
+
+    <!-- NEW: hidden bullet points -->
+    <ul class="journey-points">
+      <li>Helped in organizing <span class="hl-purple">IPE Fiesta 2026</span>: 14-day departmental flagship with 500+ participants
+</li>
+      <li>Managed <span class="hl-purple">IPE BBQ Night</span> logistics for 5 academic batches (200+ attendees)
+</li>
+      <li>Designed visual assets for <span class="hl-purple">Fresher's Reception 2024</span> (300+ students engaged)
+</li>
+      <li>Orchestrated game section for annual departmental picnic <span class="hl-purple">(200+ participants)</span></li>
+    </ul>
+
+    <div class="journey-tags">
+      <span class="tag">Time Management</span>
+      <span class="tag">Event Organizing</span>
+    </div>
+  </div>
+</article>
+          
+
+            <article class="journey-card">
+  <div class="journey-card-badge journey-card-badge--slate"></div>
+
+  <div class="journey-card-inner" role="button" tabindex="0" aria-expanded="false">
+    <div class="journey-card-header">
+      <div class="journey-card-titles">
+        <h3 class="journey-role">Event Coordinator</h3>
+        <p class="journey-org">IEOM Buet Student Chapter</p>
+      </div>
+      <span class="journey-meta">2025-Present</span>
+    </div>
+
+    <p class="journey-text">
+     Coordinated international conferences focused on industrial engineering and operations management, managing a diverse group of stakeholders.
+    </p>
+
+    <!-- NEW: view more chip/button -->
+<button class="journey-expand" type="button" aria-expanded="false">
+  <span class="journey-expand-label">View more</span>
+  <span class="material-symbols-outlined journey-expand-icon" aria-hidden="true">expand_more</span>
+</button>
+
+    <!-- NEW: hidden bullet points -->
+    <ul class="journey-points">
+      <li>Organized <span class="hl-purple">“No-Code Machine Learning”</span>, an online seminar (100+ online attendees)
+</li>
+      <li>Produced <span class="hl-purple">20+</span> professional designs for digital and print campaigns.</li>
+      <li>Mentored junior designers, improving <span class="hl-purple">workflow efficiency</span> and delivery timelines.</li>
+
+    </ul>
+
+    <div class="journey-tags">
+      <span class="tag">Art Direction</span>
+      <span class="tag">Team Leadership</span>
+      <span class="tag">Event Hosting</span>
+    </div>
+  </div>
+</article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Capability Matrix -->
+      <section id="skills" class="section section-skills">
+        <div class="section-header section-header-center">
+          <p class="eyebrow">Capability Matrix</p>
+          <h2 class="section-title">Skills &amp; Tools</h2>
+        </div>
+        <div class="skills-grid">
+          <!-- Technical Engineering -->
+          <article class="skills-card">
+            <div class="skills-header">
+              <div class="skills-icon-circle skills-icon-circle--purple">
+                <span class="material-symbols-outlined">engineering</span>
+              </div>
+              <h3>Technical Engineering</h3>
+            </div>
+            <div class="skills-pills">
+              <span class="pill-skill">MATLAB</span>
+              <span class="pill-skill">Python</span>
+              <span class="pill-skill">SQL</span>
+              <span class="pill-skill">SolidWorks</span>
+            </div>
+          </article>
+
+          <!-- Design Suite -->
+          <article class="skills-card">
+            <div class="skills-header">
+              <div class="skills-icon-circle skills-icon-circle--teal">
+                <span class="material-symbols-outlined">brush</span>
+              </div>
+              <h3>Design Suite</h3>
+            </div>
+            <div class="skills-pills">
+              <span class="pill-skill">Figma</span>
+              <span class="pill-skill">Adobe Creative Cloud</span>
+              <span class="pill-skill">Canva</span>
+              <span class="pill-skill">Microsoft Office</span>
+            </div>
+          </article>
+
+          <!-- Core Strengths -->
+          <article class="skills-card">
+            <div class="skills-header">
+              <div class="skills-icon-circle skills-icon-circle--teal">
+                <span class="material-symbols-outlined">brush</span>
+              </div>
+              <h3>Core Strengths</h3>
+            </div>
+            <div class="skills-pills">
+              <span class="pill-skill">Leadership</span>
+              <span class="pill-skill">Event Management</span>
+              <span class="pill-skill">Project Management</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Portfolio / Key Milestones -->
+      <section id="portfolio" class="section section-portfolio">
+        <div class="section-header">
+          <p class="eyebrow">Achievements</p>
+          <h2 class="section-title">Key Milestones</h2>
+        </div>
+        <div class="portfolio-grid">
+          <article class="project-card">
+            <div class="project-image">
+              <img src="assets/project-operations-research.png" alt="Operations research project visual" />
+            </div>
+            <div class="project-body">
+              <p class="project-eyebrow">Optimization</p>
+              <h3 class="project-title">Operations Research Project</h3>
+              <p class="project-description">
+                Linear programming model for warehouse logistics optimization, reducing lead times by 15%.
+              </p>
+              <div class="project-footer project-footer--actions">
+                 <a class="link-button" href="assets/reports/or-project.pdf" target="_blank" rel="noopener">
+    View report
+  </a>
+  <button class="link-button project-expand" type="button" aria-expanded="false">
+    Details
+  </button>
+</div>
+
+<ul class="project-points">
+  <li>Built <span class="hl">linear programming</span> model with constraints and objective function</li>
+  <li>Improved lead time by <span class="hl">15%</span> (simulation/case)</li>
+</ul>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="assets/project-rak-ceramics.png" alt="RAK Ceramics facility visit" />
+            </div>
+            <div class="project-body">
+              <p class="project-eyebrow">Industrial Visit</p>
+              <h3 class="project-title">RAK Ceramics Facility Visit</h3>
+              <p class="project-description">
+                Comprehensive analysis of manufacturing processes and quality control systems in a
+                large-scale facility.
+              </p>
+              <div class="project-footer project-footer--actions">
+  <a class="link-button" href="assets/reports/rak-ceramics-report.pdf" target="_blank" rel="noopener">
+    View report
+  </a>
+
+  <button class="link-button project-expand" type="button" aria-expanded="false">
+    Details
+  </button>
+</div>
+
+<ul class="project-points">
+  <li><span class="hl">Process mapping</span> of key manufacturing stages</li>
+  <li><span class="hl">Quality control</span> observations and improvement notes</li>
+  <li>Summary of learnings and outcomes</li>
+</ul>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-image">
+              <img src="assets/project-csca.png" alt="CSCA certification" />
+            </div>
+            <div class="project-body">
+              <p class="project-eyebrow">Professional Credential</p>
+              <h3 class="project-title">CSCA Certification</h3>
+              <p class="project-description">
+                Certified Supply Chain Analyst (CSCA) – mastery over supply chain management frameworks.
+              </p>
+             <div class="project-footer project-footer--actions">
+  <a class="link-button" href="PASTE_VERIFICATION_URL_HERE" target="_blank" rel="noopener">
+    Verify
+  </a>
+
+  <button class="link-button project-expand" type="button" aria-expanded="false">
+    Details
+  </button>
+</div>
+
+<ul class="project-points">
+  <li>Covered <span class="hl">SCOR</span> concepts and core supply chain KPIs</li>
+  <li>Focus on <span class="hl">procurement</span>, planning, and logistics fundamentals</li>
+</ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+
+      <!-- Design Works -->
+<section id="designs" class="section section-designs">
+  <div class="section-header">
+    <p class="eyebrow">Design</p>
+    <h2 class="section-title">Design Works</h2>
+  </div>
+
+  <div class="designs-reveal">
+  <div class="designs-float">
+    <!-- Item 1 -->
+    <a class="design-float-card" href="assets/designs/design-01.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-01.jpg" alt="Design work 01" loading="lazy" />
+      <span class="design-float-caption">Prime Bank Event Poster</span>
+    </a>
+
+    <!-- Item 2 -->
+    <a class="design-float-card" href="assets/designs/design-02.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-02.jpg" alt="Design work 02" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 3 -->
+    <a class="design-float-card" href="assets/designs/design-03.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-03.jpg" alt="Design work 03" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 4 -->
+    <a class="design-float-card" href="assets/designs/design-04.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-04.jpg" alt="Design work 04" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 5 -->
+    <a class="design-float-card" href="assets/designs/design-05.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-05.jpg" alt="Design work 05" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 6 -->
+    <a class="design-float-card" href="assets/designs/design-06.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-06.jpg" alt="Design work 06" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 7 -->
+    <a class="design-float-card" href="assets/designs/design-07.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-07.jpg" alt="Design work 07" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 8 -->
+    <a class="design-float-card" href="assets/designs/design-08.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-08.jpg" alt="Design work 08" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 9 -->
+    <a class="design-float-card" href="assets/designs/design-09.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-09.jpg" alt="Design work 09" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 10 -->
+    <a class="design-float-card" href="assets/designs/design-10.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-10.jpg" alt="Design work 10" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 11 -->
+    <a class="design-float-card" href="assets/designs/design-11.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-11.jpg" alt="Design work 11" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 12 -->
+    <a class="design-float-card" href="assets/designs/design-12.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-12.jpg" alt="Design work 12" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 13 -->
+    <a class="design-float-card" href="assets/designs/design-13.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-13.jpg" alt="Design work 13" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 14 -->
+    <a class="design-float-card" href="assets/designs/design-14.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-14.jpg" alt="Design work 14" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+
+     <!-- Item 15 -->
+    <a class="design-float-card" href="assets/designs/design-15.jpg" target="_blank" rel="noopener">
+      <img src="assets/designs/design-15.jpg" alt="Design work 15" loading="lazy" />
+      <span class="design-float-caption">Club Social Media Banner</span>
+    </a>
+  </div>
+
+     <div class="designs-more">
+    <button class="btn btn-outline designs-more-btn" type="button" aria-expanded="false">
+      View more
+    </button>
+  </div>
+</div>
+
+  
+</section>
+
+      <!-- Academic Foundation -->
+      <section class="section section-academics">
+        <div class="section-header section-header-center">
+          <h2 class="section-title">Academic Foundation</h2>
+        </div>
+        <div class="academics-grid">
+          <article class="academic-card">
+            <div class="academic-overlay academic-overlay--purple"></div>
+            <div class="academic-body">
+              <div class="academic-icon-circle academic-icon-circle--purple">
+                <span class="material-symbols-outlined">school</span>
+              </div>
+              <h3>BUET</h3>
+              <p>B.Sc. in Industrial &amp; Production Engineering</p>
+              <p class="academic-meta">2023 — Present</p>
+            </div>
+          </article>
+          <article class="academic-card">
+            <div class="academic-overlay academic-overlay--teal"></div>
+            <div class="academic-body">
+              <div class="academic-icon-circle academic-icon-circle--teal">
+                <span class="material-symbols-outlined">history_edu</span>
+              </div>
+              <h3>Rangpur Cadet College</h3>
+              <p>Higher Secondary School Certificate</p>
+              <p class="academic-meta">2021</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Contact / Footer CTA -->
+      <section id="contact" class="section section-contact">
+        <div class="contact-layout">
+          <div class="contact-copy">
+            <h2 class="contact-heading">Let's engineer<br />the future.</h2>
+            <p class="contact-subtitle">
+              Open for collaborations in industrial strategy, design management, and technical projects.
+            </p>
+            <div class="contact-links">
+  <a href="https://www.linkedin.com/in/arafat-payel/" target="_blank" rel="noopener noreferrer" class="link-chip">LinkedIn</a>
+  <a href="mailto:payelarafat@gmail.com" class="link-chip">Email</a>
+  <a href="assets/CV.pdf" download class="link-chip">Download CV</a>
+</div>
+          </div>
+          <div class="contact-card">
+            <form class="contact-form" onsubmit="return false;">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" placeholder="Your name" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" />
+              </div>
+              <div class="field">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Tell me about your project"></textarea>
+              </div>
+              <button class="btn btn-primary btn-block" type="submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-left">ARAFAT.PAYEL</div>
+          <div class="footer-center">© 2026 Arafat Payel. All rights reserved.</div>
+          <div class="footer-right">
+            <a href="#" class="footer-link">Privacy</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+ <script>
+  const cards = document.querySelectorAll(".journey-card-inner");
+
+  cards.forEach((card) => {
+    const btn = card.querySelector(".journey-expand");
+
+    btn.addEventListener("click", () => {
+      const isOpening = !card.classList.contains("is-open");
+
+      // close all first (so only one stays open)
+      cards.forEach((c) => {
+        c.classList.remove("is-open");
+        const b = c.querySelector(".journey-expand");
+        if (b) b.setAttribute("aria-expanded", "false");
+      });
+
+      // open this one if it was closed
+      if (isOpening) {
+        card.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
+      }
     });
+  });
+</script>
+  <script>
+  // Reveal sections on scroll
+  const revealTargets = document.querySelectorAll("section");
+  revealTargets.forEach((el) => el.classList.add("reveal"));
 
-    // Toggle the clicked project card if it was not already expanded
-    if (!isExpanded) {
-        projectCard.setAttribute('aria-expanded', 'true');
-    }
-});
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) e.target.classList.add("is-visible");
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  revealTargets.forEach((el) => io.observe(el));
+</script>
+
+  <script>
+  // Designs "View more"
+  const designsReveal = document.querySelector(".designs-reveal");
+  const designsBtn = document.querySelector(".designs-more-btn");
+
+  if (designsReveal && designsBtn) {
+    designsReveal.classList.add("is-collapsed");
+
+    designsBtn.addEventListener("click", () => {
+      const expanded = designsReveal.classList.contains("is-expanded");
+
+      designsReveal.classList.toggle("is-expanded", !expanded);
+      designsReveal.classList.toggle("is-collapsed", expanded);
+
+      designsBtn.textContent = expanded ? "View more" : "View less";
+      designsBtn.setAttribute("aria-expanded", expanded ? "false" : "true");
+    });
+  }
+</script>
+  <script>
+  // Achievements "Details" expand
+  const projectCards = document.querySelectorAll(".project-card");
+
+  projectCards.forEach((card) => {
+    const btn = card.querySelector(".project-expand");
+    if (!btn) return;
+
+    btn.addEventListener("click", () => {
+      const opening = !card.classList.contains("is-open");
+
+      // Optional: close others so only one is open at a time
+      projectCards.forEach((c) => {
+        c.classList.remove("is-open");
+        const b = c.querySelector(".project-expand");
+        if (b) b.setAttribute("aria-expanded", "false");
+      });
+
+      if (opening) {
+        card.classList.add("is-open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+    });
+  });
+</script>
+</body>
+</html>
+
+
+
