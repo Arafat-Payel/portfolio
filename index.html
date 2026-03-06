@@ -322,11 +322,11 @@
               <p class="project-description">
                 Linear programming model for warehouse logistics optimization, reducing lead times by 15%.
               </p>
-              <div class="project-footer project-footer--actions">
-                 <a class="link-button" href="assets/reports/or-project.pdf" target="_blank" rel="noopener">
+            <div class="project-footer project-footer--actions">
+  <a class="action-btn action-btn--outline" href="assets/reports/or-project.pdf" target="_blank" rel="noopener">
     View report
   </a>
-  <button class="link-button project-expand" type="button" aria-expanded="false">
+  <button class="action-btn action-btn--solid project-details" type="button">
     Details
   </button>
 </div>
@@ -353,11 +353,11 @@
                 large-scale facility.
               </p>
               <div class="project-footer project-footer--actions">
-  <a class="link-button" href="assets/reports/rak-ceramics-report.pdf" target="_blank" rel="noopener">
+  <a class="action-btn action-btn--outline" href="assets/reports/rak-ceramics-report.pdf" target="_blank" rel="noopener">
     View report
   </a>
 
-  <button class="link-button project-expand" type="button" aria-expanded="false">
+  <button class="action-btn action-btn--solid project-details" type="button">
     Details
   </button>
 </div>
@@ -384,11 +384,11 @@
                 Certified Supply Chain Analyst (CSCA) – mastery over supply chain management frameworks.
               </p>
              <div class="project-footer project-footer--actions">
-  <a class="link-button" href="PASTE_VERIFICATION_URL_HERE" target="_blank" rel="noopener">
+  <a class="action-btn action-btn--outline" href="PASTE_VERIFICATION_URL_HERE" target="_blank" rel="noopener">
     Verify
   </a>
 
-  <button class="link-button project-expand" type="button" aria-expanded="false">
+  <button class="action-btn action-btn--solid project-details" type="button">
     Details
   </button>
 </div>
@@ -589,6 +589,23 @@
     </main>
   </div>
 
+  <!-- Achievement Details Modal -->
+<div class="modal" id="achievementModal" aria-hidden="true">
+  <div class="modal-overlay" data-close="true"></div>
+
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" type="button" aria-label="Close" data-close="true">
+      <span class="material-symbols-outlined" aria-hidden="true">close</span>
+    </button>
+
+    <p class="project-eyebrow" id="modalEyebrow"></p>
+    <h3 class="project-title" id="modalTitle"></h3>
+    <p class="project-description" id="modalDesc"></p>
+
+    <ul class="project-points project-points--modal" id="modalPoints"></ul>
+  </div>
+</div>
+
  <script>
   const cards = document.querySelectorAll(".journey-card-inner");
 
@@ -649,29 +666,55 @@
     });
   }
 </script>
-  <script>
-  // Achievements "Details" expand
-  const projectCards = document.querySelectorAll(".project-card");
+ <script>
+  const modal = document.getElementById("achievementModal");
+  const modalEyebrow = document.getElementById("modalEyebrow");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDesc = document.getElementById("modalDesc");
+  const modalPoints = document.getElementById("modalPoints");
 
-  projectCards.forEach((card) => {
-    const btn = card.querySelector(".project-expand");
+  function openModalFromCard(card) {
+    const eyebrow = card.querySelector(".project-eyebrow")?.textContent?.trim() || "";
+    const title = card.querySelector(".project-title")?.textContent?.trim() || "";
+    const desc = card.querySelector(".project-description")?.textContent?.trim() || "";
+
+    modalEyebrow.textContent = eyebrow;
+    modalTitle.textContent = title;
+    modalDesc.textContent = desc;
+
+    // Copy bullet points
+    modalPoints.innerHTML = "";
+    const points = card.querySelectorAll(".project-points li");
+    points.forEach((li) => modalPoints.appendChild(li.cloneNode(true)));
+
+    modal.classList.add("is-open");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal() {
+    modal.classList.remove("is-open");
+    modal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  // open modal on Details click
+  document.querySelectorAll(".project-card").forEach((card) => {
+    const btn = card.querySelector(".project-details");
     if (!btn) return;
 
-    btn.addEventListener("click", () => {
-      const opening = !card.classList.contains("is-open");
+    btn.addEventListener("click", () => openModalFromCard(card));
+  });
 
-      // Optional: close others so only one is open at a time
-      projectCards.forEach((c) => {
-        c.classList.remove("is-open");
-        const b = c.querySelector(".project-expand");
-        if (b) b.setAttribute("aria-expanded", "false");
-      });
+  // close modal on overlay or X click
+  modal.addEventListener("click", (e) => {
+    const close = e.target.closest("[data-close='true']");
+    if (close) closeModal();
+  });
 
-      if (opening) {
-        card.classList.add("is-open");
-        btn.setAttribute("aria-expanded", "true");
-      }
-    });
+  // optional: ESC to close
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
   });
 </script>
 </body>
