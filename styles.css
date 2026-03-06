@@ -838,7 +838,48 @@ a {
   align-items: center;
   gap: 8px;
 }
+/* Achievements action buttons */
+.project-footer--actions {
+  display: flex;
+  gap: 16px;              /* more space than before */
+  align-items: center;
+}
 
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 16px;
+  border-radius: 9999px;
+
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  cursor: pointer;
+
+  transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.action-btn--outline {
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+}
+
+.action-btn--solid {
+  background: rgba(168, 85, 247, 0.18);
+  border-color: rgba(168, 85, 247, 0.50);
+  color: #fff;
+}
 .link-button {
   padding: 0;
   border: none;
@@ -850,6 +891,71 @@ a {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: none;
+}
+
+.modal.is-open {
+  display: block;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.modal-card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: min(420px, calc(100vw - 48px)); /* tune to match your card width */
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  padding: 28px;
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.8);
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: #fff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-close .material-symbols-outlined {
+  font-size: 22px;
+}
+
+/* In modal, points should be visible (not collapsed) */
+.project-points--modal {
+  margin: 16px 0 0;
+  padding-left: 18px;
+  max-height: none;
+  opacity: 1;
+  overflow: visible;
 }
 /* DESIGN WORKS (FLOATING) */
 
@@ -1375,6 +1481,7 @@ img { max-width: 100%; height: auto; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition: none; transform: none; opacity: 1; }
 }
+
 
 
 
