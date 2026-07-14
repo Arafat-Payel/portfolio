@@ -1639,5 +1639,83 @@ img { max-width: 100%; height: auto; }
     max-height: 280px;
   }
 }
+/* ===== FIX: seminars zig-zag + non-cropped clickable images ===== */
+#seminars .journey-card-inner {
+  margin-left: 64px;          /* keep timeline alignment */
+  padding: 18px;
+}
 
+#seminars .seminar-row {
+  display: grid;
+  grid-template-columns: minmax(260px, 340px) 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* even cards: text left, image right */
+#seminars .seminar-row.seminar-row--reverse {
+  grid-template-columns: 1fr minmax(260px, 340px);
+}
+#seminars .seminar-row.seminar-row--reverse > .seminar-photo-link {
+  grid-column: 2;
+}
+#seminars .seminar-row.seminar-row--reverse > .seminar-content {
+  grid-column: 1;
+}
+
+/* clickable image box */
+#seminars .seminar-photo-link.journey-photo {
+  margin: 0;                  /* override old .journey-photo margin-bottom */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  padding: 10px;
+  border-radius: 16px;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border-soft);
+  overflow: hidden;
+}
+
+/* IMPORTANT: no crop */
+#seminars .seminar-photo-link.journey-photo img {
+  width: 100%;
+  height: auto !important;    /* override old fixed height */
+  max-height: 320px;
+  object-fit: contain !important;  /* override old cover */
+  display: block;
+  border-radius: 10px;
+}
+
+#seminars .seminar-content {
+  min-width: 0;
+  padding-right: 4px;
+}
+
+/* mobile: single column */
+@media (max-width: 900px) {
+  #seminars .journey-card-inner {
+    margin-left: 40px;
+    padding: 14px;
+  }
+
+  #seminars .seminar-row,
+  #seminars .seminar-row.seminar-row--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  #seminars .seminar-row.seminar-row--reverse > .seminar-photo-link,
+  #seminars .seminar-row.seminar-row--reverse > .seminar-content {
+    grid-column: auto;
+  }
+
+  #seminars .seminar-photo-link.journey-photo {
+    min-height: 200px;
+  }
+
+  #seminars .seminar-photo-link.journey-photo img {
+    max-height: 280px;
+  }
+}
 
