@@ -16,11 +16,23 @@
     <header class="nav">
       <div class="nav-inner">
         <div class="nav-brand">ARAFAT.PAYEL</div>
-        <nav class="nav-links">
+        <button class="nav-toggle" type="button" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primaryNav">
+          <span class="material-symbols-outlined" id="navToggleIcon" aria-hidden="true">menu</span>
+        </button>
+        <nav class="nav-links" id="primaryNav">
           <a href="#home">Home</a>
           <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
-          <a href="#portfolio">Achievements</a>
+          <div class="nav-item nav-item--dropdown">
+            <button class="nav-dropdown-trigger" type="button" aria-expanded="false" aria-haspopup="true">
+              Achievements
+              <span class="material-symbols-outlined nav-dropdown-caret" aria-hidden="true">expand_more</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="#portfolio">Key Milestones</a>
+              <a href="seminars.html">Seminars &amp; Competitions</a>
+            </div>
+          </div>
           <a href="#designs">Designs</a>
           <a href="#contact" class="nav-cta">Hire Me</a>
         </nav>
@@ -49,7 +61,7 @@
           <div class="hero-portrait">
             <div class="hero-gradient"></div>
             <div class="hero-portrait-frame">
-              <img src="assets/portrait.png" alt="Arafat Payel portrait" />
+              <img src="assets/portrait.png" alt="Arafat Payel portrait" loading="eager" fetchpriority="high" decoding="async" />
             </div>
           </div>
         </div>
@@ -314,7 +326,7 @@
         <div class="portfolio-grid">
           <article class="project-card">
             <div class="project-image">
-              <img src="assets/project-operations-research.png" alt="Operations research project visual" />
+              <img src="assets/project-operations-research.png" alt="Operations research project visual" loading="lazy" decoding="async" />
             </div>
             <div class="project-body">
               <p class="project-eyebrow">Optimization</p>
@@ -340,7 +352,7 @@
 
           <article class="project-card">
             <div class="project-image">
-              <img src="assets/project-rak-ceramics.png" alt="RAK Ceramics facility visit" />
+              <img src="assets/project-rak-ceramics.png" alt="RAK Ceramics facility visit" loading="lazy" decoding="async" />
             </div>
             <div class="project-body">
               <p class="project-eyebrow">Industrial Visit</p>
@@ -369,7 +381,7 @@
 
           <article class="project-card">
             <div class="project-image">
-              <img src="assets/project-csca.png" alt="CSCA certification" />
+              <img src="assets/project-csca.png" alt="CSCA certification" loading="lazy" decoding="async" />
             </div>
             <div class="project-body">
               <p class="project-eyebrow">Professional Credential</p>
@@ -378,7 +390,7 @@
                 Certified Supply Chain Analyst (CSCA) – mastery over supply chain management frameworks.
               </p>
              <div class="project-footer project-footer--actions">
-  <a class="link-button" href="PASTE_VERIFICATION_URL_HERE" target="_blank" rel="noopener">
+  <a class="link-button" href="PASTE_VERIFICATION_URL_HERE" target="_blank" rel="noopener" title="TODO: replace with your CSCA verification link">
     Verify
   </a>
 
@@ -408,92 +420,92 @@
   <div class="designs-float">
     <!-- Item 1 -->
     <a class="design-float-card" href="assets/designs/design-01.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-01.jpg" alt="Design work 01" loading="lazy" />
+      <img src="assets/designs/design-01.jpg" alt="Prime Bank event poster design" loading="lazy" decoding="async" />
       <span class="design-float-caption">Prime Bank Event Poster</span>
     </a>
 
     <!-- Item 2 -->
     <a class="design-float-card" href="assets/designs/design-02.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-02.jpg" alt="Design work 02" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-02.jpg" alt="Financial Inclusion: Banking and Youth campaign banner" loading="lazy" decoding="async" />
+      <span class="design-float-caption">"Financial Inclusion: Banking &amp; Youth" — Prime Bank</span>
     </a>
 
      <!-- Item 3 -->
     <a class="design-float-card" href="assets/designs/design-03.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-03.jpg" alt="Design work 03" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-03.jpg" alt="The MNC Blueprint career seminar banner" loading="lazy" decoding="async" />
+      <span class="design-float-caption">"The MNC Blueprint" Career Seminar</span>
     </a>
 
      <!-- Item 4 -->
     <a class="design-float-card" href="assets/designs/design-04.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-04.jpg" alt="Design work 04" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-04.jpg" alt="GP FUTUREMAKERS online roadshow banner" loading="lazy" decoding="async" />
+      <span class="design-float-caption">GP FUTUREMAKERS Online Roadshow</span>
     </a>
 
      <!-- Item 5 -->
     <a class="design-float-card" href="assets/designs/design-05.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-05.jpg" alt="Design work 05" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-05.jpg" alt="Zen Talk: The Dabur Way event poster" loading="lazy" decoding="async" />
+      <span class="design-float-caption">"Zen Talk: The Dabur Way" Poster</span>
     </a>
 
      <!-- Item 6 -->
     <a class="design-float-card" href="assets/designs/design-06.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-06.jpg" alt="Design work 06" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-06.jpg" alt="IPE Fiesta 2026 campaign visual" loading="lazy" decoding="async" />
+      <span class="design-float-caption">IPE Fiesta 2026 Campaign Visual</span>
     </a>
 
      <!-- Item 7 -->
     <a class="design-float-card" href="assets/designs/design-07.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-07.jpg" alt="Design work 07" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-07.jpg" alt="IPE BBQ Night event banner" loading="lazy" decoding="async" />
+      <span class="design-float-caption">IPE BBQ Night Banner</span>
     </a>
 
      <!-- Item 8 -->
     <a class="design-float-card" href="assets/designs/design-08.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-08.jpg" alt="Design work 08" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-08.jpg" alt="Fresher's Reception 2024 visual" loading="lazy" decoding="async" />
+      <span class="design-float-caption">Fresher's Reception 2024 Visual</span>
     </a>
 
      <!-- Item 9 -->
     <a class="design-float-card" href="assets/designs/design-09.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-09.jpg" alt="Design work 09" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-09.jpg" alt="No-Code Machine Learning seminar banner" loading="lazy" decoding="async" />
+      <span class="design-float-caption">"No-Code Machine Learning" Seminar</span>
     </a>
 
      <!-- Item 10 -->
     <a class="design-float-card" href="assets/designs/design-10.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-10.jpg" alt="Design work 10" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-10.jpg" alt="Nirapotta UIHP Cohort 3 pitch deck cover" loading="lazy" decoding="async" />
+      <span class="design-float-caption">Nirapotta — UIHP Cohort 3 Pitch Deck</span>
     </a>
 
      <!-- Item 11 -->
     <a class="design-float-card" href="assets/designs/design-11.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-11.jpg" alt="Design work 11" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-11.jpg" alt="Club event poster design" loading="lazy" decoding="async" />
+      <span class="design-float-caption">Club Event Poster</span>
     </a>
 
      <!-- Item 12 -->
     <a class="design-float-card" href="assets/designs/design-12.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-12.jpg" alt="Design work 12" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-12.jpg" alt="Social media campaign banner design" loading="lazy" decoding="async" />
+      <span class="design-float-caption">Social Media Campaign Banner</span>
     </a>
 
      <!-- Item 13 -->
     <a class="design-float-card" href="assets/designs/design-13.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-13.jpg" alt="Design work 13" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-13.jpg" alt="Digital flyer design" loading="lazy" decoding="async" />
+      <span class="design-float-caption">Digital Flyer Design</span>
     </a>
 
      <!-- Item 14 -->
     <a class="design-float-card" href="assets/designs/design-14.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-14.jpg" alt="Design work 14" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-14.jpg" alt="Event promo graphic design" loading="lazy" decoding="async" />
+      <span class="design-float-caption">Event Promo Graphic</span>
     </a>
 
      <!-- Item 15 -->
     <a class="design-float-card" href="assets/designs/design-15.jpg" target="_blank" rel="noopener">
-      <img src="assets/designs/design-15.jpg" alt="Design work 15" loading="lazy" />
-      <span class="design-float-caption">Club Social Media Banner</span>
+      <img src="assets/designs/design-15.jpg" alt="Brand campaign visual design" loading="lazy" decoding="async" />
+      <span class="design-float-caption">Brand Campaign Visual</span>
     </a>
   </div>
 
@@ -581,91 +593,7 @@
     </main>
   </div>
 
- <script>
-  const cards = document.querySelectorAll(".journey-card-inner");
-
-  cards.forEach((card) => {
-    const btn = card.querySelector(".journey-expand");
-
-    btn.addEventListener("click", () => {
-      const isOpening = !card.classList.contains("is-open");
-
-      // close all first (so only one stays open)
-      cards.forEach((c) => {
-        c.classList.remove("is-open");
-        const b = c.querySelector(".journey-expand");
-        if (b) b.setAttribute("aria-expanded", "false");
-      });
-
-      // open this one if it was closed
-      if (isOpening) {
-        card.classList.add("is-open");
-        btn.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-</script>
-  <script>
-  // Reveal sections on scroll
-  const revealTargets = document.querySelectorAll("section");
-  revealTargets.forEach((el) => el.classList.add("reveal"));
-
-  const io = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((e) => {
-        if (e.isIntersecting) e.target.classList.add("is-visible");
-      });
-    },
-    { threshold: 0.12 }
-  );
-
-  revealTargets.forEach((el) => io.observe(el));
-</script>
-
-  <script>
-  // Designs "View more"
-  const designsReveal = document.querySelector(".designs-reveal");
-  const designsBtn = document.querySelector(".designs-more-btn");
-
-  if (designsReveal && designsBtn) {
-    designsReveal.classList.add("is-collapsed");
-
-    designsBtn.addEventListener("click", () => {
-      const expanded = designsReveal.classList.contains("is-expanded");
-
-      designsReveal.classList.toggle("is-expanded", !expanded);
-      designsReveal.classList.toggle("is-collapsed", expanded);
-
-      designsBtn.textContent = expanded ? "View more" : "View less";
-      designsBtn.setAttribute("aria-expanded", expanded ? "false" : "true");
-    });
-  }
-</script>
-  <script>
-  // Achievements "Details" expand
-  const projectCards = document.querySelectorAll(".project-card");
-
-  projectCards.forEach((card) => {
-    const btn = card.querySelector(".project-expand");
-    if (!btn) return;
-
-    btn.addEventListener("click", () => {
-      const opening = !card.classList.contains("is-open");
-
-      // Optional: close others so only one is open at a time
-      projectCards.forEach((c) => {
-        c.classList.remove("is-open");
-        const b = c.querySelector(".project-expand");
-        if (b) b.setAttribute("aria-expanded", "false");
-      });
-
-      if (opening) {
-        card.classList.add("is-open");
-        btn.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
-</script>
+ <script src="site.js"></script>
 </body>
 </html>
 
