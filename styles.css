@@ -21,11 +21,10 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px; /* offset for sticky navbar */
-}
-html,
-body {
+html, body {
+  overflow-x: hidden;
   margin: 0;
-  padding: 0;
+  width: 100%;
 }
 
 body {
