@@ -1717,4 +1717,63 @@ img { max-width: 100%; height: auto; }
     max-height: 280px;
   }
 }
+/* ============================================
+   UNIVERSAL CONTENT PADDING FIX
+   Adds safe space around ALL content
+   ============================================ */
 
+/* 1. Limit content width and center it */
+.page {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* 2. Remove the old full-bleed padding override */
+.section {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* 3. Add internal breathing room to every card/container */
+.skills-card,
+.journey-card-inner,
+.project-card,
+.academic-card,
+.contact-card,
+.summary-card,
+.design-float-card {
+  padding: 48px;
+}
+
+/* 4. Slightly more space between skill pills */
+.skills-pills {
+  gap: 12px;
+}
+
+/* 5. Bigger, comfier skill pills */
+.pill-skill {
+  padding: 14px 22px;
+}
+
+/* 6. Mobile: reduce padding so it still fits */
+@media (max-width: 768px) {
+  .page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .skills-card,
+  .journey-card-inner,
+  .project-card,
+  .academic-card,
+  .contact-card,
+  .summary-card {
+    padding: 28px;
+  }
+
+  .design-float-card {
+    padding: 0; /* image cards don't need internal padding */
+  }
+}
