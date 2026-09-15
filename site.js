@@ -1,129 +1,155 @@
-// Mobile nav toggle
-const navToggle = document.getElementById("navToggle");
-const navToggleIcon = document.getElementById("navToggleIcon");
-const primaryNav = document.getElementById("primaryNav");
+/* ============================================================
+   site.js – Arafat Payel Portfolio
+   Handles: nav toggle, dropdown, journey card expand,
+            project card expand, design gallery reveal,
+            reveal-on-scroll animations.
+   ============================================================ */
 
-if (navToggle && primaryNav) {
-  const closeNav = () => {
-    primaryNav.classList.remove("is-open");
-    navToggle.setAttribute("aria-expanded", "false");
-    if (navToggleIcon) navToggleIcon.textContent = "menu";
-  };
+(function () {
+  "use strict";
 
-  navToggle.addEventListener("click", () => {
-    const isOpen = primaryNav.classList.toggle("is-open");
-    navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-    if (navToggleIcon) navToggleIcon.textContent = isOpen ? "close" : "menu";
-  });
+  /* ----------------------------------------------------------
+     1. NAVIGATION – hamburger toggle
+  ---------------------------------------------------------- */
+  const navToggle = document.getElementById("navToggle");
+  const navToggleIcon = document.getElementById("navToggleIcon");
+  const primaryNav = document.getElementById("primaryNav");
 
-  primaryNav.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeNav);
-  });
-}
-
-// Nav "Achievements" dropdown
-const dropdownTriggers = document.querySelectorAll(".nav-dropdown-trigger");
-
-dropdownTriggers.forEach((trigger) => {
-  trigger.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const item = trigger.closest(".nav-item--dropdown");
-    const isOpen = item.classList.contains("is-open");
-
-    document.querySelectorAll(".nav-item--dropdown").forEach((el) => {
-      el.classList.remove("is-open");
-      el.querySelector(".nav-dropdown-trigger")?.setAttribute("aria-expanded", "false");
+  if (navToggle && primaryNav) {
+    navToggle.addEventListener("click", function () {
+      const isOpen = primaryNav.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", isOpen);
+      if (navToggleIcon) {
+        navToggleIcon.textContent = isOpen ? "close" : "menu";
+      }
     });
 
-    if (!isOpen) {
-      item.classList.add("is-open");
-      trigger.setAttribute("aria-expanded", "true");
+    // Close nav when a link is clicked (mobile)
+    primaryNav.querySelectorAll("a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        primaryNav.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+        if (navToggleIcon) navToggleIcon.textContent = "menu";
+      });
+    });
+  }
+
+  /* ----------------------------------------------------------
+     2. NAVIGATION – dropdown (Achievements)
+  ---------------------------------------------------------- */
+  document.querySelectorAll(".nav-item--dropdown").forEach(function (item) {
+    const trigger = item.querySelector(".nav-dropdown-trigger");
+    if (!trigger) return;
+
+    trigger.addEventListener("click", function (e) {
+      e.stopPropagation();
+      const isOpen = item.classList.toggle("is-open");
+      trigger.setAttribute("aria-expanded", isOpen);
+    });
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener("click", function () {
+    document.querySelectorAll(".nav-item--dropdown.is-open").forEach(function (item) {
+      item.classList.remove("is-open");
+      const trigger = item.querySelector(".nav-dropdown-trigger");
+      if (trigger) trigger.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  /* ----------------------------------------------------------
+     3. JOURNEY CARDS – expand / collapse
+  ---------------------------------------------------------- */
+  document.querySelectorAll(".journey-card-inner").forEach(function (card) {
+    const btn = card.querySelector(".journey-expand");
+    if (!btn) return;
+
+    function toggle() {
+      const isOpen = card.classList.toggle("is-open");
+      card.setAttribute("aria-expanded", isOpen);
+      btn.setAttribute("aria-expanded", isOpen);
+      const label = btn.querySelector(".journey-expand-label");
+      if (label) label.textContent = isOpen ? "View less" : "View more";
     }
-  });
-});
 
-document.addEventListener("click", () => {
-  document.querySelectorAll(".nav-item--dropdown").forEach((el) => {
-    el.classList.remove("is-open");
-    el.querySelector(".nav-dropdown-trigger")?.setAttribute("aria-expanded", "false");
-  });
-});
-
-// Reveal sections on scroll
-const revealTargets = document.querySelectorAll("section");
-revealTargets.forEach((el) => el.classList.add("reveal"));
-
-const io = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) e.target.classList.add("is-visible");
-    });
-  },
-  { threshold: 0.12 }
-);
-
-revealTargets.forEach((el) => io.observe(el));
-
-// Journey / timeline cards expand
-const journeyCards = document.querySelectorAll(".journey-card-inner");
-
-journeyCards.forEach((card) => {
-  const btn = card.querySelector(".journey-expand");
-  if (!btn) return;
-
-  btn.addEventListener("click", () => {
-    const isOpening = !card.classList.contains("is-open");
-
-    journeyCards.forEach((c) => {
-      c.classList.remove("is-open");
-      const b = c.querySelector(".journey-expand");
-      if (b) b.setAttribute("aria-expanded", "false");
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      toggle();
     });
 
-    if (isOpening) {
-      card.classList.add("is-open");
-      btn.setAttribute("aria-expanded", "true");
-    }
-  });
-});
-
-// Designs "View more"
-const designsReveal = document.querySelector(".designs-reveal");
-const designsBtn = document.querySelector(".designs-more-btn");
-
-if (designsReveal && designsBtn) {
-  designsReveal.classList.add("is-collapsed");
-
-  designsBtn.addEventListener("click", () => {
-    const expanded = designsReveal.classList.contains("is-expanded");
-
-    designsReveal.classList.toggle("is-expanded", !expanded);
-    designsReveal.classList.toggle("is-collapsed", expanded);
-
-    designsBtn.textContent = expanded ? "View more" : "View less";
-    designsBtn.setAttribute("aria-expanded", expanded ? "false" : "true");
-  });
-}
-
-// Achievements "Details" expand
-const projectCards = document.querySelectorAll(".project-card");
-
-projectCards.forEach((card) => {
-  const btn = card.querySelector(".project-expand");
-  if (!btn) return;
-
-  btn.addEventListener("click", () => {
-    const opening = !card.classList.contains("is-open");
-
-    projectCards.forEach((c) => {
-      c.classList.remove("is-open");
-      const b = c.querySelector(".project-expand");
-      if (b) b.setAttribute("aria-expanded", "false");
+    // Also allow clicking the card body (excluding button) to toggle
+    card.addEventListener("click", function (e) {
+      if (e.target.closest(".journey-expand")) return;
+      if (e.target.closest("a")) return;
+      toggle();
     });
 
-    if (opening) {
-      card.classList.add("is-open");
-      btn.setAttribute("aria-expanded", "true");
-    }
+    // Keyboard accessibility
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggle();
+      }
+    });
   });
-});
+
+  /* ----------------------------------------------------------
+     4. PROJECT CARDS – expand / collapse
+  ---------------------------------------------------------- */
+  document.querySelectorAll(".project-expand").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      const card = btn.closest(".project-card");
+      if (!card) return;
+      const isOpen = card.classList.toggle("is-open");
+      btn.setAttribute("aria-expanded", isOpen);
+      btn.textContent = isOpen ? "Less" : "Details";
+    });
+  });
+
+  /* ----------------------------------------------------------
+     5. DESIGN GALLERY – collapsed / expanded reveal
+  ---------------------------------------------------------- */
+  const designsReveal = document.querySelector(".designs-reveal");
+  const designsMoreBtn = document.querySelector(".designs-more-btn");
+
+  if (designsReveal && designsMoreBtn) {
+    // Start collapsed
+    designsReveal.classList.add("is-collapsed");
+
+    designsMoreBtn.addEventListener("click", function () {
+      const isExpanded = designsReveal.classList.toggle("is-expanded");
+      designsReveal.classList.toggle("is-collapsed", !isExpanded);
+      designsMoreBtn.setAttribute("aria-expanded", isExpanded);
+      designsMoreBtn.textContent = isExpanded ? "View less" : "View more";
+    });
+  }
+
+  /* ----------------------------------------------------------
+     6. REVEAL ON SCROLL – IntersectionObserver
+  ---------------------------------------------------------- */
+  if ("IntersectionObserver" in window) {
+    const revealEls = document.querySelectorAll(
+      ".journey-card, .project-card, .skills-card, .academic-card, .summary-card, .design-float-card"
+    );
+
+    revealEls.forEach(function (el) {
+      el.classList.add("reveal");
+    });
+
+    const observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+
+    revealEls.forEach(function (el) {
+      observer.observe(el);
+    });
+  }
+})();
