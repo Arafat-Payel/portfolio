@@ -1590,6 +1590,141 @@ img { max-width: 100%; height: auto; }
   align-items: stretch;
 }
 
+/* =====================================================
+   PROMOTION TIMELINE — embedded inside journey cards
+   ===================================================== */
+
+/* Slightly taller max-height for cards with timelines */
+.journey-card-inner--promo.is-open .journey-points {
+  max-height: 600px;
+}
+
+/* Timeline wrapper — always visible at bottom of card */
+.promo-timeline {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--card-border-soft);
+}
+
+/* Vertical track holding nodes + connectors */
+.promo-track {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Each role row */
+.promo-node {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+/* The small circle node */
+.promo-node-dot {
+  flex-shrink: 0;
+  margin-top: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: 2px solid var(--accent);
+  background: var(--bg);
+  position: relative;
+  z-index: 1;
+}
+
+/* Current role: filled dot */
+.promo-node--current .promo-node-dot {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(168, 85, 247, 0.15);
+}
+
+/* Past roles: hollow dot, muted colour */
+.promo-node--past .promo-node-dot {
+  border-color: rgba(168, 85, 247, 0.35);
+}
+
+/* Role text block */
+.promo-node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: 4px;
+}
+
+.promo-role {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Current role is visually dominant */
+.promo-node--current .promo-role {
+  font-size: 14px;
+  color: var(--accent);
+}
+
+/* Past roles are muted */
+.promo-node--past .promo-role {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.promo-date {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.promo-node--current .promo-date {
+  color: var(--text-soft);
+}
+
+/* Connector between nodes: vertical line + "promoted" label */
+.promo-connector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 0;
+  margin-left: 4px; /* align with node-dot center */
+}
+
+.promo-line {
+  width: 2px;
+  height: 22px;
+  background: linear-gradient(
+    to bottom,
+    rgba(168, 85, 247, 0.5),
+    rgba(168, 85, 247, 0.15)
+  );
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+
+.promo-label {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  opacity: 0.55;
+  white-space: nowrap;
+}
+
+/* Responsive: timeline stays readable on mobile */
+@media (max-width: 600px) {
+  .promo-role {
+    font-size: 12px;
+  }
+  .promo-node--current .promo-role {
+    font-size: 13px;
+  }
+}
+  
 #seminars .seminar-row--reverse .seminar-photo-link { order: 2; }
 #seminars .seminar-row--reverse .seminar-content { order: 1; }
 
